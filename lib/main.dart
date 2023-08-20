@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:second_app/config/config.dart';
 import 'package:second_app/presentation/providers/providers.dart';
 
-void main() => runApp(ProviderScope(
-      child: MyApp(),
-    ));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  runApp(ProviderScope(
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends ConsumerStatefulWidget {
   @override
@@ -25,7 +31,6 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
-  
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
