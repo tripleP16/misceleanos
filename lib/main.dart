@@ -53,3 +53,8 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     );
   }
 }
+
+//Record example 
+// (String, int) getStringAndInt() {
+//   return ('Hello', 1);
+// }
