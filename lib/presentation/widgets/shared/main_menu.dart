@@ -40,7 +40,9 @@ class _HomeMenuItem extends StatelessWidget {
   const _HomeMenuItem(
       {required this.title,
       required this.route,
-      required this.icon });
+      required this.icon,
+      // ignore: unused_element
+      this.bgColors = const [Colors.blue, Colors.blueAccent] });
 
   @override
   Widget build(BuildContext context) {
