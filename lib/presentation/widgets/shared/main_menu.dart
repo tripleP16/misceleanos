@@ -38,11 +38,9 @@ class _HomeMenuItem extends StatelessWidget {
   final List<Color> bgColors;
 
   const _HomeMenuItem(
-      {super.key,
-      required this.title,
+      {required this.title,
       required this.route,
-      required this.icon, 
-      this.bgColors = const [Colors.lightBlue , Colors.blue] });
+      required this.icon });
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ class PermissionsScreen extends StatelessWidget {
 }
 
 class _PermissionsView extends ConsumerWidget {
-  const _PermissionsView({super.key});
+  const _PermissionsView();
 
   @override
   Widget build(BuildContext context, ref) {

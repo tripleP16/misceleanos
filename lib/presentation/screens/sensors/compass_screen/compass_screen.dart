@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:math' show pi;
 import 'package:second_app/presentation/providers/providers.dart';
 import 'package:second_app/presentation/screens/screens.dart';
 

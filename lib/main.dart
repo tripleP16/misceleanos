@@ -8,12 +8,14 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  runApp(ProviderScope(
+  runApp(const ProviderScope(
     child: MyApp(),
   ));
 }
 
 class MyApp extends ConsumerStatefulWidget {
+  const MyApp({super.key});
+
   @override
   MyAppState createState() => MyAppState();
 }
