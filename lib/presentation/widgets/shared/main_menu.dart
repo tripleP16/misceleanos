@@ -16,6 +16,7 @@ final menuItems = <MenuItem>[
   MenuItem('Giroscopio Ball', Icons.sports_baseball, '/gyroscope-ball'),
   MenuItem('Brujula', Icons.explore, '/compass'),
   MenuItem('Pokemons', Icons.catching_pokemon, '/pokemons'),
+  MenuItem('Biometricos', Icons.fingerprint, '/biometrics'),
 ];
 
 class MainMenu extends StatelessWidget {
@@ -24,11 +25,13 @@ class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.count(
-      crossAxisCount: 3,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
-      children: menuItems.map((item) => _HomeMenuItem(title: item.title, route: item.route, icon: item.icon)).toList()
-    );
+        crossAxisCount: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        children: menuItems
+            .map((item) => _HomeMenuItem(
+                title: item.title, route: item.route, icon: item.icon))
+            .toList());
   }
 }
 
@@ -43,40 +46,38 @@ class _HomeMenuItem extends StatelessWidget {
       required this.route,
       required this.icon,
       // ignore: unused_element
-      this.bgColors = const [Colors.blue, Colors.blueAccent] });
+      this.bgColors = const [Colors.blue, Colors.blueAccent]});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.push(route),
       child: Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
-            colors: bgColors,
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-          )
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              color: Colors.white,
-              size: 40,
-            ),
-            const SizedBox( height:  10,),
-            Text(title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                  colors: bgColors,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: Colors.white,
+                size: 40,
               ),
-            )
-          ],
-        )
-      ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white),
+              )
+            ],
+          )),
     );
   }
 }
