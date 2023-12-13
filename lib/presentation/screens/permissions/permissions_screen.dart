@@ -22,6 +22,7 @@ class _PermissionsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final permissions = ref.watch(permissionsProvider);
+    final showAds = ref.watch(showAdsProvider);
 
     return ListView(
       children: [
@@ -31,54 +32,57 @@ class _PermissionsView extends ConsumerWidget {
             subtitle: Text('${permissions.camera}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestCameraAccess();
-        }),
-
-         CheckboxListTile(
+            }),
+        CheckboxListTile(
             value: permissions.photoLibraryGranted,
             title: const Text('Galeria'),
             subtitle: Text('${permissions.photoLibrary}'),
             onChanged: (_) {
-              ref.read(permissionsProvider.notifier).requestPhotoLibraryAccess();
-        }),
-
-         CheckboxListTile(
+              ref
+                  .read(permissionsProvider.notifier)
+                  .requestPhotoLibraryAccess();
+            }),
+        CheckboxListTile(
             value: permissions.sensorsGranted,
             title: const Text('Sensores'),
             subtitle: Text('${permissions.sensors}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestSensorsAccess();
-        }),
-
-         CheckboxListTile(
+            }),
+        CheckboxListTile(
             value: permissions.locationGranted,
             title: const Text('Localizacion'),
             subtitle: Text('${permissions.location}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestLocationAccess();
-        }),
-
-         CheckboxListTile(
+            }),
+        CheckboxListTile(
             value: permissions.locationAlwaysGranted,
             title: const Text('Localizacion Siempre Activa'),
             subtitle: Text('${permissions.locationAlways}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestLocationAlways();
-        }),
-
-         CheckboxListTile(
+            }),
+        CheckboxListTile(
             value: permissions.locationWhenInUseGranted,
             title: const Text('Localizacion solamente app en uso'),
             subtitle: Text('${permissions.locationWhenInUse}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestLocationWhenInUse();
-        }),
-
-          CheckboxListTile(
+            }),
+        CheckboxListTile(
             value: permissions.locationWhenInUseGranted,
             title: const Text('Localizacion solamente app en uso'),
             subtitle: Text('${permissions.locationWhenInUse}'),
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestLocationWhenInUse();
+            }),
+        CheckboxListTile(
+            value: showAds,
+            title: const Text('Mostrar ads'),
+            subtitle: const Text('Esta opcion es para mostrar ads'),
+            onChanged: (_) {
+              ref.read(showAdsProvider.notifier).toggleAds();
             }),
       ],
     );

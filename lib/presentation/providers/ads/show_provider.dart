@@ -4,7 +4,7 @@ import 'package:second_app/config/plugins/shared_preferences_plugin.dart';
 const storeKey = 'showAds';
 
 class ShowAdsNotifier extends StateNotifier<bool> {
-  ShowAdsNotifier() : super(false) {
+  ShowAdsNotifier() : super(true) {
     checkState();
   }
 
