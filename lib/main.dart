@@ -15,7 +15,14 @@ void main() async {
       );
   Workmanager().registerOneOffTask(
       "com.example.secondApp.simpleTask", "com.example.secondApp.simpleTask",
-      inputData: {'hola': 'mundo'});
+      inputData: {'hola': 'mundo'},
+      constraints: Constraints(
+        networkType: NetworkType.connected,
+        // requiresBatteryNotLow: true,
+        // requiresCharging: true,
+        // requiresDeviceIdle: true,
+        // requiresStorageNotLow: true
+      ));
   await AdmobPlugin.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
