@@ -12,6 +12,11 @@ final adInterstitialId = Platform.isAndroid
     ? 'ca-app-pub-3940256099942544/1033173712'
     : 'ca-app-pub-3940256099942544/4411468910';
 
+// TODO: replace this test ad unit with your own ad unit.
+final rewardedAd = Platform.isAndroid
+    ? 'ca-app-pub-3940256099942544/5224354917'
+    : 'ca-app-pub-3940256099942544/1712485313';
+
 class AdmobPlugin {
   static Future<void> initialize() async {
     await MobileAds.instance.initialize();
@@ -47,7 +52,7 @@ class AdmobPlugin {
           onAdLoaded: (ad) {
             print('$ad loaded.');
 
-               ad.fullScreenContentCallback = FullScreenContentCallback(
+            ad.fullScreenContentCallback = FullScreenContentCallback(
                 // Called when the ad showed the full screen content.
                 onAdShowedFullScreenContent: (ad) {},
                 // Called when an impression occurs on the ad.
@@ -70,6 +75,44 @@ class AdmobPlugin {
           // Called when an ad request failed.
           onAdFailedToLoad: (LoadAdError error) {
             print('InterstitialAd failed to load: $error');
+            completer.completeError(error);
+          },
+        ));
+    return completer.future;
+  }
+
+  static Future<RewardedAd> loadRewardedAd() {
+    Completer<RewardedAd> completer = Completer();
+    RewardedAd.load(
+        adUnitId: rewardedAd,
+        request: const AdRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+          // Called when an ad is successfully received.
+          onAdLoaded: (ad) {
+            print('$ad loaded.');
+            ad.fullScreenContentCallback = FullScreenContentCallback(
+                // Called when the ad showed the full screen content.
+                onAdShowedFullScreenContent: (ad) {},
+                // Called when an impression occurs on the ad.
+                onAdImpression: (ad) {},
+                // Called when the ad failed to show full screen content.
+                onAdFailedToShowFullScreenContent: (ad, err) {
+                  // Dispose the ad here to free resources.
+                  ad.dispose();
+                },
+                // Called when the ad dismissed full screen content.
+                onAdDismissedFullScreenContent: (ad) {
+                  // Dispose the ad here to free resources.
+                  ad.dispose();
+                },
+                // Called when a click is recorded for an ad.
+                onAdClicked: (ad) {});
+            // Keep a reference to the ad so you can show it later.
+            completer.complete(ad);
+          },
+          // Called when an ad request failed.
+          onAdFailedToLoad: (LoadAdError error) {
+            print('RewardedAd failed to load: $error');
             completer.completeError(error);
           },
         ));

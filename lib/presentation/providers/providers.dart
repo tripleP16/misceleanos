@@ -12,3 +12,5 @@ export 'location/watch_location_provider.dart';
 export 'location/map_controller_provider.dart';
 export 'badge/badge_count_provider.dart';
 export 'ads/admob_providers.dart';
+export 'ads/points_provider.dart';
+export 'ads/show_provider.dart';

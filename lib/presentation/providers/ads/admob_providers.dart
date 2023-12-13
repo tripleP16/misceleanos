@@ -16,3 +16,12 @@ final adInterstitialProvider =
 
   return ad;
 });
+
+
+final adRewardedProvider =
+    FutureProvider.autoDispose<RewardedAd>((ref) async {
+  //TODO: validar si se muestran o no los ads
+  final ad = await AdmobPlugin.loadRewardedAd();
+
+  return ad;
+});

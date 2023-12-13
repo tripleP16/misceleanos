@@ -8,16 +8,17 @@ class AdFullScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final interstitialAdAsync = ref.watch(adInterstitialProvider);
+    ref.listen(adInterstitialProvider, (previous, next) {
+      if (!next.hasValue) return;
+      if (next.value == null) return;
+      next.value!.show();
+    });
     if (interstitialAdAsync.isLoading) {
       return const Scaffold(
         body: Center(
           child: Text('Cargando ad'),
         ),
       );
-    }
-
-    if (interstitialAdAsync.hasValue) {
-      interstitialAdAsync.value!.show();
     }
 
     return Scaffold(

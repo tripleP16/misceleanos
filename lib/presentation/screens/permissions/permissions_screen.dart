@@ -72,6 +72,14 @@ class _PermissionsView extends ConsumerWidget {
             onChanged: (_) {
               ref.read(permissionsProvider.notifier).requestLocationWhenInUse();
         }),
+
+          CheckboxListTile(
+            value: permissions.locationWhenInUseGranted,
+            title: const Text('Localizacion solamente app en uso'),
+            subtitle: Text('${permissions.locationWhenInUse}'),
+            onChanged: (_) {
+              ref.read(permissionsProvider.notifier).requestLocationWhenInUse();
+            }),
       ],
     );
   }
