@@ -13,16 +13,16 @@ void main() async {
       isInDebugMode:
           true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
       );
-  Workmanager().registerOneOffTask(
-      "com.example.secondApp.simpleTask", "com.example.secondApp.simpleTask",
-      inputData: {'hola': 'mundo'},
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-        // requiresBatteryNotLow: true,
-        // requiresCharging: true,
-        // requiresDeviceIdle: true,
-        // requiresStorageNotLow: true
-      ));
+  // Workmanager().registerOneOffTask(
+  //     "com.example.secondApp.simpleTask", "com.example.secondApp.simpleTask",
+  //     inputData: {'hola': 'mundo'},
+  //     constraints: Constraints(
+  //       networkType: NetworkType.connected,
+  //       // requiresBatteryNotLow: true,
+  //       // requiresCharging: true,
+  //       // requiresDeviceIdle: true,
+  //       // requiresStorageNotLow: true
+  //     ));
   await AdmobPlugin.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
