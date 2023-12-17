@@ -14,3 +14,4 @@ export 'badge/badge_count_provider.dart';
 export 'ads/admob_providers.dart';
 export 'ads/points_provider.dart';
 export 'ads/show_provider.dart';
+export 'pokemons/pokemon_db_provider.dart';
